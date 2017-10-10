@@ -16,6 +16,9 @@ For example:
 
 """
 
+#On runtime r/t for loop
+
+
 def pig_latin(phrase):
     """Turn a phrase into pig latin.
 
@@ -24,6 +27,26 @@ def pig_latin(phrase):
         >>> pig_latin('hello awesome programmer')
         'ellohay awesomeyay rogrammerpay'
     """
+
+    # store vowels in set for O1 runtime search
+    vowels = set(['a', 'e', 'i', 'o', 'u'])
+
+    # store translated words
+    result = []
+
+    # convert str to lst of words
+    phrase = phrase.split(" ")
+
+    for word in phrase:
+        # if 1st letter consonant, move 1st letter + ay to end of word
+        if word[0] not in vowels:
+            result.append(word[1:] + word[0] + "ay")
+        # if 1st letter vowel, + yay to end of word
+        else:
+            result.append(word + "yay")
+
+    # convert back to str
+    return ' '.join(result)
 
 
 if __name__ == '__main__':
